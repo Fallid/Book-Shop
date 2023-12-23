@@ -50,8 +50,8 @@
     <div class="home position-flex bottom-0 end-0" id="home">
             <div class="home-text">
                 <h1>Koleksi Ebooks untuk <br> Pertumbuhan Pribadi dan <br> Profesional Anda with coffee</h1>
-                <p>Dalam e-book kami, temukan kisah nyata individu yang berhasil mencapai mimpi 
-                  dan tujuan mereka. Bukan sekadar motivasi, ini adalah rangkuman pengalaman hidup, 
+                <p>Dalam e-book kami, temukan kisah nyata individu yang berhasil <br> 
+                  mencapai mimpi dan tujuan mereka. Bukan sekadar motivasi, ini adalah rangkuman pengalaman hidup, 
                   tantangan, dan strategi sukses.</p>
             </div>
             <aside class="home-img">
