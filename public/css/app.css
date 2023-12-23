@@ -10,3 +10,7 @@
     align-items: center;
     gap: 1.5rem;
 }
+
+.subTitle {
+    font-size: 24px;
+}
