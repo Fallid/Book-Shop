@@ -18,3 +18,7 @@ img {
     width: 800px;
     grid-column: auto;
 }
+
+.logo {
+    font-size: 40px;
+}
