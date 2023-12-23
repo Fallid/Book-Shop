@@ -1,0 +1,10 @@
+.bi {
+    font-size: 30px;
+    cursor: pointer;
+    color: black;
+    padding-top: 5px;
+}
+
+.bi :hover{
+    color: aquamarine;
+}
