@@ -32,15 +32,16 @@
           ></button>
           <div class= "search-bar">
             <form >
-              <input type="text" name="" placeholder= "search" >
+              <input type="text" name="" placeholder= "Buku apa yang anda cari ?" >
               <button class="icon-search" type="submit"><i class="fa fa-search" aria> </i>
 
               </button>
             </form>
         </div>
-        <span><i class="bi me-2 bi-cart"></i></span>
-        <div class="login d-grid gap-2 d-md-flex justify-content-md-end">
-          <button class="btn btn-primary SIGN_UP" type="button">SIGN UP</button>
+        <span><i class="bi me-2 bi-cart" style="font-size: 30px;"></i></span>
+        <div class=" d-grid gap-2 d-md-flex justify-content-md-end">
+          <button class="btn btn-primary signup" type="button">SIGN UP</button>
+          <button class="btn btn-primary Login" type="button">LOG IN</button>
         </div>
       </div>
     </header>
@@ -66,9 +67,144 @@
         crossorigin="anonymous"
       ></script>
 
+<footer>
+  <footer class="mt-5 bg-warning">
+      <div class="row footer-wrapper">
+        <div
+          class="col-md-6 col-xs-12 d-flex justify-content-center ilab-bawah"
+        >
+          <img
+            src="{{ asset('assets/bookhouse.png') }}"
+            alt="logo-footer"
+            width="150px"
+          />
+        </div>
 
+        <div class="col-md-2 col-xs-12 justify-content-center">
+          <p>
+            <a
+              class="text-secondary link-underline link-underline-opacity-0"
+              href="http://"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Support</a
+            >
+          </p>
+          <p>
+            <a
+              class="text-dark link-underline link-underline-opacity-0"
+              href="http://"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Getting Start</a
+            >
+          </p>
+          <p>
+            <a
+              class="text-dark link-underline link-underline-opacity-0"
+              href="http://"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Help</a
+            >
+          </p>
+    
+        </div>
+
+        <div class="col-md-2 col-xs-12 justify-content-center">
+          <p>
+            <a
+              class="text-secondary link-underline link-underline-opacity-0"
+              href="http://"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Information</a
+            >
+          </p>
+          <p>
+            <a
+              class="text-dark link-underline link-underline-opacity-0"
+              href="http://"
+              target="_blank"
+              rel="noopener noreferrer"
+              >About Us</a
+            >
+          </p>
+          <p>
+            <a
+              class="text-dark link-underline link-underline-opacity-0"
+              href="http://"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Books</a
+            >
+          </p>
+      
+        </div>
+
+        <div class="col-md-2 col-xs-12 justify-content-center">
+          <p>
+            <a
+              class="text-secondary link-underline link-underline-opacity-0"
+              href="http://"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Follow us</a
+            >
+          </p>
+          <p>
+            <a
+              class="text-dark link-underline link-underline-opacity-0"
+              href="http://"
+              target="_blank"
+              rel="noopener noreferrer"
+              ><img
+                src= "{{ asset('assets/logo-facebook.png') }}"
+                alt="logo-facebook"
+                width="12px"
+                style="margin-right: 17px"
+              />Facebook</a
+            >
+          </p>
+          <p>
+            <a
+              class="text-dark link-underline link-underline-opacity-0"
+              href="http://"
+              target="_blank"
+              rel="noopener noreferrer"
+              ><img
+                src="{{ asset('assets/logo-twitter.png') }}"
+                alt="logo-twitter "
+                width="18px"
+                style="margin-right: 6px"
+              />
+              Twitter</a
+            >
+          </p>
+          <p>
+            <a
+              class="text-dark link-underline link-underline-opacity-0"
+              href="http://"
+              target="_blank"
+              rel="noopener noreferrer"
+              ><img
+                src="{{ asset('assets/logo-instagram.png') }}"
+                alt="logo-instagram"
+                width="15px"
+                style="margin-right: 10px"
+              />
+              Instagram</a
+            >
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 col-xs-12 d-flex justify-content-center">
+          <p class="text-secondary">Copyrigth © 2023 By The Book House</p>
+        </div>
+      </div>
+    </footer>
+</footer>
     </body>
-
-
     </html>
     
