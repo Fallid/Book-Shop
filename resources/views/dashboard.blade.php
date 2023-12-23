@@ -72,23 +72,23 @@
         crossorigin="anonymous"
       ></script>
 
-<footer>
   <footer class="mt-5 bg-warning">
-      <div class="row footer-wrapper">
+      <div class="row row-cols-4">
         <div
-          class="col-md-6 col-xs-12 d-flex justify-content-center ilab-bawah"
+          class="d-flex justify-content-center"
         >
           <img
             src="{{ asset('assets/bookhouse.png') }}"
             alt="logo-footer"
-            width="150px"
+            width="300px"
           />
         </div>
 
-        <div class="col-md-2 col-xs-12 justify-content-center">
+        <section class="ez mt-5">
+                  <div class="col-xs-12 justify-content-center">
           <p>
             <a
-              class="text-secondary link-underline link-underline-opacity-0"
+              class="text-secondary fs-3 link-underline link-underline-opacity-0"
               href="http://"
               target="_blank"
               rel="noopener noreferrer"
@@ -97,7 +97,7 @@
           </p>
           <p>
             <a
-              class="text-dark link-underline link-underline-opacity-0"
+              class="text-dark fs-5 link-underline link-underline-opacity-0"
               href="http://"
               target="_blank"
               rel="noopener noreferrer"
@@ -106,7 +106,7 @@
           </p>
           <p>
             <a
-              class="text-dark link-underline link-underline-opacity-0"
+              class="text-dark fs-5 link-underline link-underline-opacity-0"
               href="http://"
               target="_blank"
               rel="noopener noreferrer"
@@ -115,11 +115,14 @@
           </p>
     
         </div>
+        </section>
 
-        <div class="col-md-2 col-xs-12 justify-content-center">
+
+        <section class="ez mt-5">
+                <div class="col-xs-12 justify-content-center">
           <p>
             <a
-              class="text-secondary link-underline link-underline-opacity-0"
+              class="text-secondary fs-3 link-underline link-underline-opacity-0"
               href="http://"
               target="_blank"
               rel="noopener noreferrer"
@@ -128,7 +131,7 @@
           </p>
           <p>
             <a
-              class="text-dark link-underline link-underline-opacity-0"
+              class="text-dark fs-5 link-underline link-underline-opacity-0"
               href="http://"
               target="_blank"
               rel="noopener noreferrer"
@@ -137,7 +140,7 @@
           </p>
           <p>
             <a
-              class="text-dark link-underline link-underline-opacity-0"
+              class="text-dark fs-5 link-underline link-underline-opacity-0"
               href="http://"
               target="_blank"
               rel="noopener noreferrer"
@@ -146,11 +149,14 @@
           </p>
       
         </div>
+        </section>
+  
 
-        <div class="col-md-2 col-xs-12 justify-content-center">
+        <section class="ez mt-5">
+                  <div class="col-xs-12 justify-content-center">
           <p>
             <a
-              class="text-secondary link-underline link-underline-opacity-0"
+              class="text-secondary fs-3 link-underline link-underline-opacity-0"
               href="http://"
               target="_blank"
               rel="noopener noreferrer"
@@ -159,28 +165,28 @@
           </p>
           <p>
             <a
-              class="text-dark link-underline link-underline-opacity-0"
+              class="text-dark fs-5 link-underline link-underline-opacity-0"
               href="http://"
               target="_blank"
               rel="noopener noreferrer"
               ><img
                 src= "{{ asset('assets/logo-facebook.png') }}"
                 alt="logo-facebook"
-                width="12px"
-                style="margin-right: 17px"
+                width="22px"
+                style="margin-right: 25px" 
               />Facebook</a
             >
           </p>
           <p>
             <a
-              class="text-dark link-underline link-underline-opacity-0"
+              class="text-dark fs-5 link-underline link-underline-opacity-0"
               href="http://"
               target="_blank"
               rel="noopener noreferrer"
               ><img
                 src="{{ asset('assets/logo-twitter.png') }}"
                 alt="logo-twitter "
-                width="18px"
+                width="36px"
                 style="margin-right: 6px"
               />
               Twitter</a
@@ -188,27 +194,26 @@
           </p>
           <p>
             <a
-              class="text-dark link-underline link-underline-opacity-0"
+              class="text-dark fs-5 link-underline link-underline-opacity-0"
               href="http://"
               target="_blank"
               rel="noopener noreferrer"
               ><img
                 src="{{ asset('assets/logo-instagram.png') }}"
                 alt="logo-instagram"
-                width="15px"
+                width="34px"
                 style="margin-right: 10px"
               />
               Instagram</a
             >
           </p>
         </div>
+        </section>
+
       </div>
-      <div class="row">
-        <div class="col-md-6 col-xs-12 d-flex justify-content-center">
+        <div class="md-3 col-md-3 col-xs-12 d-flex justify-content-center">
           <p class="text-secondary">Copyrigth © 2023 By The Book House</p>
         </div>
-      </div>
-    </footer>
 </footer>
     </body>
     </html>
