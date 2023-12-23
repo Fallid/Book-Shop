@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Type;
 use App\Http\Requests\StoreTypeRequest;
 use App\Http\Requests\UpdateTypeRequest;
+use App\Http\Resources\TypeCollection;
+use App\Http\Resources\TypeResource;
+use Exception;
 
 class TypeController extends Controller
 {
@@ -13,7 +16,16 @@ class TypeController extends Controller
      */
     public function index()
     {
-        //
+        try {
+            $queryData = Type::all();
+            $formattedDatas = new TypeCollection($queryData);
+            return response()->json([
+                "message" => "success",
+                "data" => $formattedDatas
+            ], 200);
+        } catch (Exception $e) {
+            return response()->json($e->getMessage(), 400);
+        }
     }
 
     /**
@@ -29,15 +41,34 @@ class TypeController extends Controller
      */
     public function store(StoreTypeRequest $request)
     {
-        //
+        $validatedRequest = $request->validated();
+        try {
+            $queryData = Type::create($validatedRequest);
+            $formattedDatas = new TypeResource($queryData);
+            return response()->json([
+                "message" => "success",
+                "data" => $formattedDatas
+            ], 200);
+        } catch (Exception $e) {
+            return response()->json($e->getMessage(), 400);
+        }
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Type $type)
+    public function show($id)
     {
-        //
+        try {
+            $queryData = Type::findOrFail($id);
+            $formattedDatas = new TypeResource($queryData);
+            return response()->json([
+                "message" => "success",
+                "data" => $formattedDatas
+            ], 200);
+        } catch (Exception $e) {
+            return response()->json($e->getMessage(), 400);
+        }
     }
 
     /**
@@ -51,16 +82,38 @@ class TypeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateTypeRequest $request, Type $type)
+    public function update(UpdateTypeRequest $request, $id)
     {
-        //
+        $validatedRequest = $request->validated();
+        try {
+            $queryData = Type::findOrFail($id);
+            $queryData->update($validatedRequest);
+            $queryData->save();
+            $formattedDatas = new TypeResource($queryData);
+            return response()->json([
+                "message" => "success",
+                "data" => $formattedDatas
+            ], 200);
+        } catch (Exception $e) {
+            return response()->json($e->getMessage(), 400);
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Type $type)
+    public function destroy($id)
     {
-        //
+        try {
+            $queryData = Type::findOrFail($id);
+            $queryData->delete();
+            $formattedDatas = new TypeResource($queryData);
+            return response()->json([
+                "message" => "success",
+                "data" => $formattedDatas
+            ], 200);
+        } catch (Exception $e) {
+            return response()->json($e->getMessage(), 400);
+        }
     }
 }
