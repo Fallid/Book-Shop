@@ -18,3 +18,8 @@ img {
     width: 800px;
     grid-column: auto;
 }
+
+.subTitle {
+    font-size: 24px;
+}
+
