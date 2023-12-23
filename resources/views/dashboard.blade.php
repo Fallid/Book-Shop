@@ -18,7 +18,9 @@
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">
-          <img src="{{ asset('assets/bookhouse.png') }}" width="80px" />
+          <div class="logo">
+            <img src="{{ asset('assets/bookhouse.png') }}" width="80px"/>
+          </div>
         </a>
         <button
           class="navbar-toggler"
@@ -34,7 +36,7 @@
           id="navbarSupportedContent"
           >
           <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <input class="form-control me-2 col-2 rounded-pill" type="search" placeholder="Buku apa yang ingin dicari?" aria-label="Search"> 
             <button class="btn btn-outline-success" type="submit">Search</button>
           </form>
         </div>
@@ -47,15 +49,20 @@
     </header>
 
     <main>
-    <div class="home position-flex bottom-0 end-0" id="home">
+    <div class="home sm-5 text-start" id="home">
             <div class="home-text">
                 <h1>Koleksi Ebooks untuk <br> Pertumbuhan Pribadi dan <br> Profesional Anda with coffee</h1>
                 <p>Dalam e-book kami, temukan kisah nyata individu yang berhasil <br> 
-                  mencapai mimpi dan tujuan mereka. Bukan sekadar motivasi, ini adalah rangkuman pengalaman hidup, 
-                  tantangan, dan strategi sukses.</p>
+                  mencapai mimpi dan tujuan mereka. Bukan sekadar motivasi, ini adalah <br>
+                  rangkuman pengalaman hidup, tantangan, dan strategi sukses.</p>
             </div>
-            <aside class="home-img">
-              <img src="{{ asset('assets/bookcover.png') }}" alt="foto-main">
+            <aside class="home-img row">
+              <div class="col me-5">
+                <img src="{{ asset('assets/bookcover.png') }}" alt="foto-main">
+              </div>
+              <div class="col">
+                <img src="{{ asset('assets/bookcover1.jpg') }}" alt="foto-main1">
+              </div>
             </aside>
         </div>
     </main>
