@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
     <title>Document</title>
     <link
@@ -15,12 +16,10 @@
   </head>
   <body>
     <header>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg bg-warning" >
+      <div class="container-fluid" >
         <a class="navbar-brand" href="#">
-          <div class="logo">
-            <img src="{{ asset('assets/bookhouse.png') }}" width="80px"/>
-          </div>
+          <img src="{{ asset('assets/bookhouse.png') }}" width="150px" />
         </a>
         <button
           class="navbar-toggler"
@@ -31,19 +30,17 @@
           aria-expanded="false"
           aria-label="Toggle navigation"
           ></button>
-          <div
-          class="collapse navbar-collapse justify-content-center"
-          id="navbarSupportedContent"
-          >
-          <form class="d-flex">
-            <input class="form-control me-2 col-2 rounded-pill" type="search" placeholder="Buku apa yang ingin dicari?" aria-label="Search"> 
-            <button class="btn btn-outline-success" type="submit">Search</button>
-          </form>
+          <div class= "search-bar">
+            <form >
+              <input type="text" name="" placeholder= "search" >
+              <button class="icon-search" type="submit"><i class="fa fa-search" aria> </i>
+
+              </button>
+            </form>
         </div>
-          <span><i class="bi me-2 bi-cart"></i></span>
-        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-          <button class="btn btn-primary LOGIN" type="button">SIGN UP</button>
-          <button class="btn btn-primary LOGIN" type="button">LOG IN</button>
+        <span><i class="bi me-2 bi-cart"></i></span>
+        <div class="login d-grid gap-2 d-md-flex justify-content-md-end">
+          <button class="btn btn-primary SIGN_UP" type="button">SIGN UP</button>
         </div>
       </div>
     </header>
