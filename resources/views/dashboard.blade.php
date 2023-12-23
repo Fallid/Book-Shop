@@ -40,7 +40,7 @@
             <button class="btn btn-outline-success" type="submit">Search</button>
           </form>
         </div>
-          <span><i class="bi me-2 bi-cart"></i></span>
+          <span><i class="bi me-2 fs-2 bi-cart"></i></span>
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
           <button class="btn btn-primary LOGIN" type="button">SIGN UP</button>
           <button class="btn btn-primary LOGIN" type="button">LOG IN</button>
