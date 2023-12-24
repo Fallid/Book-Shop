@@ -32,3 +32,7 @@ Route::prefix("")->group(function () {
 Route::prefix("")->group(function () {
     Route::apiResource("book", BookController::class);
 });
+
+Route::prefix("")->group(function () {
+    Route::apiResource("favorite", FavoriteController::class);
+});
