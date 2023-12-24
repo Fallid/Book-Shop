@@ -11,7 +11,7 @@ class UpdateBookRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,14 @@ class UpdateBookRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            "title" => "required",
+            "type_id" => "integer|required",
+            "release_date" => "integer|required",
+            "pages" => "integer|required",
+            "author" => "required",
+            "description" => "required",
+            "image" => "required|url",
+            "price" => "integer|required",
         ];
     }
 }

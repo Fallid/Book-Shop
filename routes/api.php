@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\BookController;
+use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\TypeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -21,4 +23,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix("")->group(function () {
     Route::apiResource("type", TypeController::class);
+});
+
+Route::prefix("")->group(function () {
+    Route::apiResource("book", BookController::class);
 });

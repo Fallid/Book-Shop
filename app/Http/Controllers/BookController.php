@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use App\Http\Requests\StoreBookRequest;
 use App\Http\Requests\UpdateBookRequest;
+use App\Http\Resources\BookCollection;
+use App\Http\Resources\BookResource;
+use Exception;
 
 class BookController extends Controller
 {
@@ -13,7 +16,18 @@ class BookController extends Controller
      */
     public function index()
     {
-        //
+        try {
+            $queryData = Book::select("books.id", "title", "types.name AS type", "release_date", "pages", "author", "description", "image", "price")
+            ->join("types", "types.id", "=", "books.type_id")
+            ->get();
+            $formattedDatas = new BookCollection($queryData);
+            return response()->json([
+                "message" => "success",
+                "data" => $formattedDatas
+            ], 200);
+        } catch (Exception $e) {
+            return response()->json($e->getMessage(), 400);
+        }
     }
 
     /**
@@ -29,15 +43,37 @@ class BookController extends Controller
      */
     public function store(StoreBookRequest $request)
     {
-        //
+        $validatedRequest = $request->validated();
+        try {
+            $queryData = Book::create($validatedRequest);
+            $formattedDatas = new BookResource($queryData);
+            return response()->json([
+                "message" => "success",
+                "data" => $formattedDatas
+            ], 200);
+        } catch (Exception $e) {
+            return response()->json($e->getMessage(), 400);
+        }
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Book $book)
+    public function show($id)
     {
-        //
+        try {
+            $queryData = Book::select("title", "types.name AS type", "release_date", "pages", "author", "description", "image", "price")
+            ->join("types", "types.id", "=", "books.type_id")
+            ->where("books.id", "=", $id)
+            ->first();
+            $formattedDatas = new BookResource($queryData);
+            return response()->json([
+                "message" => "success",
+                "data" => $formattedDatas
+            ], 200);
+        } catch (Exception $e) {
+            return response()->json($e->getMessage(), 400);
+        }
     }
 
     /**
@@ -51,16 +87,38 @@ class BookController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateBookRequest $request, Book $book)
+    public function update(UpdateBookRequest $request, $id)
     {
-        //
+        $validatedRequest = $request->validated();
+        try {
+            $queryData = Book::findOrFail($id);
+            $queryData->update($validatedRequest);
+            $queryData->save();
+            $formattedDatas = new BookResource($queryData);
+            return response()->json([
+                "message" => "success",
+                "data" => $formattedDatas
+            ], 200);
+        } catch (Exception $e) {
+            return response()->json($e->getMessage(), 400);
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Book $book)
+    public function destroy($id)
     {
-        //
+        try {
+            $queryData = Book::findOrFail($id);
+            $queryData->delete();
+            $formattedDatas = new BookResource($queryData);
+            return response()->json([
+                "message" => "success",
+                "data" => $formattedDatas
+            ], 200);
+        } catch (Exception $e) {
+            return response()->json($e->getMessage(), 400);
+        }
     }
 }
