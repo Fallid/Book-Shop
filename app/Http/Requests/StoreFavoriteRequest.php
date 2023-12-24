@@ -22,8 +22,8 @@ class StoreFavoriteRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "book_id" => "required",
-            "user_id" => "required"
+            "book_id" => "required|integer",
+            "user_id" => "required|integer"
         ];
     }
 }

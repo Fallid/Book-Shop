@@ -23,13 +23,13 @@ class StoreBookRequest extends FormRequest
     {
         return [
             "title" => "required",
-            "type_id" => "integer|required",
-            "release_date" => "integer|required",
-            "pages" => "integer|required",
+            "type_id" => "required|integer",
+            "release_date" => "required|integer",
+            "pages" => "required|integer",
             "author" => "required",
             "description" => "required",
             "image" => "required|url",
-            "price" => "integer|required",
+            "price" => "required|integer",
         ];
     }
 }
