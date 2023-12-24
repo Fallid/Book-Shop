@@ -10,13 +10,18 @@
 }
 
 img {
-    max-width: 100%;
-    max-height: 100%;
+    width: 273px;
+    height: auto;
+    object-fit: contain;
+}
+.customImage {
+    width: 150px;
+    height: auto;
+    object-fit: contain;
 }
 
 .home-img {
     width: 800px;
-    grid-column: auto;
 }
 
 .logo {
@@ -73,4 +78,31 @@ button {
 .SIGN_UP {
     margin-top: 30px;
     margin-right: 50px;
+}
+
+.previewcontent {
+    display: -webkit-box;
+    max-width: 400px;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+div.scrollmenu {
+    background-color: #333;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+div.scrollmenu a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+}
+
+div.scrollmenu a:hover {
+    background-color: #777;
 }
