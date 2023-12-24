@@ -62,7 +62,7 @@ class BookController extends Controller
     public function show($id)
     {
         try {
-            $queryData = Book::select("title", "types.name AS type", "release_date", "pages", "author", "description", "image", "price")
+            $queryData = Book::select("books.id", "title", "types.name AS type", "release_date", "pages", "author", "description", "image", "price")
             ->join("types", "types.id", "=", "books.type_id")
             ->where("books.id", "=", $id)
             ->first();
