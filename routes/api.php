@@ -26,18 +26,12 @@ use Illuminate\Support\Facades\Route;
 Route::post("/register", [UserController::class, "register"]);
 Route::post("/login", [UserController::class, "login"]);
 
-Route::prefix("")->group(function () {
-    Route::apiResource("type", TypeController::class);
-});
-
-Route::prefix("")->group(function () {
-    Route::apiResource("book", BookController::class);
-});
-
-Route::prefix("")->group(function () {
-    Route::apiResource("favorite", FavoriteController::class);
-});
-
-Route::prefix("")->group(function () {
-    Route::apiResource("order", OrderController::class);
+Route::group(["middleware" => ["auth:sanctum"]], function () {
+    Route::prefix("")->group(function() {
+        Route::apiResource("type", TypeController::class);
+        Route::apiResource("book", BookController::class);
+        Route::apiResource("favorite", FavoriteController::class);
+        Route::apiResource("order", OrderController::class);
+        Route::post('/logout', [UserController::class, 'logout']);
+    });
 });

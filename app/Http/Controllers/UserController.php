@@ -50,4 +50,17 @@ class UserController extends Controller
             return response()->json($e->getMessage(), 400);
         }
     }
+
+    public function logout()
+    {
+        try {
+            Auth::user()->tokens()->delete();
+
+            return response()->json([
+                "message" => "Success",
+            ], 200);
+        } catch (Exception $e) {
+            return response()->json($e->getMessage(), 400);
+        }
+    }
 }
