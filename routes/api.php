@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -35,4 +36,8 @@ Route::prefix("")->group(function () {
 
 Route::prefix("")->group(function () {
     Route::apiResource("favorite", FavoriteController::class);
+});
+
+Route::prefix("")->group(function () {
+    Route::apiResource("order", OrderController::class);
 });
