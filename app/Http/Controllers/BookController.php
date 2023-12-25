@@ -5,9 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use App\Http\Requests\StoreBookRequest;
 use App\Http\Requests\UpdateBookRequest;
-use App\Http\Resources\BookCollection;
-use App\Http\Resources\BookResource;
-use Exception;
 
 class BookController extends Controller
 {
@@ -16,18 +13,10 @@ class BookController extends Controller
      */
     public function index()
     {
-        try {
-            $queryData = Book::select("books.id", "title", "types.name AS type", "release_date", "pages", "author", "description", "image", "price")
-            ->join("types", "types.id", "=", "books.type_id")
-            ->get();
-            $formattedDatas = new BookCollection($queryData);
-            return response()->json([
-                "message" => "success",
-                "data" => $formattedDatas
-            ], 200);
-        } catch (Exception $e) {
-            return response()->json($e->getMessage(), 400);
-        }
+        // Eloquent Query Builder
+        $booksQB = Book::select("books.id", "title", "types.name AS type", "release_date", "pages", "author", "description", "image", "price")
+        ->join("types", "types.id", "=", "books.type_id")
+        ->get();
     }
 
     /**
@@ -43,17 +32,17 @@ class BookController extends Controller
      */
     public function store(StoreBookRequest $request)
     {
-        $validatedRequest = $request->validated();
-        try {
-            $queryData = Book::create($validatedRequest);
-            $formattedDatas = new BookResource($queryData);
-            return response()->json([
-                "message" => "success",
-                "data" => $formattedDatas
-            ], 200);
-        } catch (Exception $e) {
-            return response()->json($e->getMessage(), 400);
-        }
+        // Eloquent Insert Mass Assignment
+        Book::create([
+            "title" => $request->title,
+            "type_id" => $request->type_id,
+            "release_date" => $request->release_date,
+            "pages" => $request->pages,
+            "author" => $request->author,
+            "description" => $request->description,
+            "image" => $request->image,
+            "price" => $request->price
+        ]);
     }
 
     /**
@@ -61,19 +50,11 @@ class BookController extends Controller
      */
     public function show($id)
     {
-        try {
-            $queryData = Book::select("books.id", "title", "types.name AS type", "release_date", "pages", "author", "description", "image", "price")
-            ->join("types", "types.id", "=", "books.type_id")
-            ->where("books.id", "=", $id)
-            ->first();
-            $formattedDatas = new BookResource($queryData);
-            return response()->json([
-                "message" => "success",
-                "data" => $formattedDatas
-            ], 200);
-        } catch (Exception $e) {
-            return response()->json($e->getMessage(), 400);
-        }
+        // Eloquent Query Builder Single Model
+        $bookQB = Book::select("books.id", "title", "types.name AS type", "release_date", "pages", "author", "description", "image", "price")
+        ->join("types", "types.id", "=", "books.type_id")
+        ->where("books.id", "=", $id)
+        ->first();
     }
 
     /**
@@ -89,19 +70,17 @@ class BookController extends Controller
      */
     public function update(UpdateBookRequest $request, $id)
     {
-        $validatedRequest = $request->validated();
-        try {
-            $queryData = Book::findOrFail($id);
-            $queryData->update($validatedRequest);
-            $queryData->save();
-            $formattedDatas = new BookResource($queryData);
-            return response()->json([
-                "message" => "success",
-                "data" => $formattedDatas
-            ], 200);
-        } catch (Exception $e) {
-            return response()->json($e->getMessage(), 400);
-        }
+        // Eloquent Update Mass Assignment
+        Book::where("id", $id)->update([
+            "title" => $request->title,
+            "type_id" => $request->type_id,
+            "release_date" => $request->release_date,
+            "pages" => $request->pages,
+            "author" => $request->author,
+            "description" => $request->description,
+            "image" => $request->image,
+            "price" => $request->price
+        ]);
     }
 
     /**
@@ -109,16 +88,8 @@ class BookController extends Controller
      */
     public function destroy($id)
     {
-        try {
-            $queryData = Book::findOrFail($id);
-            $queryData->delete();
-            $formattedDatas = new BookResource($queryData);
-            return response()->json([
-                "message" => "success",
-                "data" => $formattedDatas
-            ], 200);
-        } catch (Exception $e) {
-            return response()->json($e->getMessage(), 400);
-        }
+        // Eloquent Delete
+        $book = Book::find($id);
+        $book->delete();
     }
 }

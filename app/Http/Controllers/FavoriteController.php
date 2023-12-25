@@ -4,10 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Favorite;
 use App\Http\Requests\StoreFavoriteRequest;
-use App\Http\Requests\UpdateFavoriteRequest;
-use App\Http\Resources\FavoriteCollection;
-use App\Http\Resources\FavoriteResource;
-use Exception;
 
 class FavoriteController extends Controller
 {
@@ -16,19 +12,11 @@ class FavoriteController extends Controller
      */
     public function index()
     {
-        try {
-            $queryData = Favorite::select("favorites.id", "books.title AS book", "users.name AS user")
-            ->join("books", "books.id", "=", "favorites.book_id")
-            ->join("users", "users.id", "=", "favorites.user_id")
-            ->get();
-            $formattedDatas = new FavoriteCollection($queryData);
-            return response()->json([
-                "message" => "success",
-                "data" => $formattedDatas
-            ], 200);
-        } catch (Exception $e) {
-            return response()->json($e->getMessage(), 400);
-        }
+        // Eloquent Query Builder
+        $favoritesQB = Favorite::select("favorites.id", "books.title AS book", "users.name AS user")
+        ->join("books", "books.id", "=", "favorites.book_id")
+        ->join("users", "users.id", "=", "favorites.user_id")
+        ->get();
     }
 
     /**
@@ -44,17 +32,11 @@ class FavoriteController extends Controller
      */
     public function store(StoreFavoriteRequest $request)
     {
-        $validatedRequest = $request->validated();
-        try {
-            $queryData = Favorite::create($validatedRequest);
-            $formattedDatas = new FavoriteResource($queryData);
-            return response()->json([
-                "message" => "success",
-                "data" => $formattedDatas
-            ], 200);
-        } catch (Exception $e) {
-            return response()->json($e->getMessage(), 400);
-        }
+        // Eloquent Insert Mass Assignment
+        Favorite::create([
+            "book_id" => $request->book_id,
+            "user_id" => $request->user_id,
+        ]);
     }
 
     /**
@@ -76,26 +58,18 @@ class FavoriteController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateFavoriteRequest $request, Favorite $favorite)
-    {
-        //
-    }
+    // public function update(UpdateFavoriteRequest $request, Favorite $favorite)
+    // {
+    //     //
+    // }
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy($id)
     {
-        try {
-            $queryData = Favorite::findOrFail($id);
-            $queryData->delete();
-            $formattedDatas = new FavoriteResource($queryData);
-            return response()->json([
-                "message" => "success",
-                "data" => $formattedDatas
-            ], 200);
-        } catch (Exception $e) {
-            return response()->json($e->getMessage(), 400);
-        }
+        // Eloquent Delete
+        $queryData = Favorite::find($id);
+        $queryData->delete();
     }
 }
