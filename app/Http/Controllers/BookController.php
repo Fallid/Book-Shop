@@ -13,10 +13,8 @@ class BookController extends Controller
      */
     public function index()
     {
-        // Eloquent Query Builder
-        $booksQB = Book::select("books.id", "title", "types.name AS type", "release_date", "pages", "author", "description", "image", "price")
-        ->join("types", "types.id", "=", "books.type_id")
-        ->get();
+        // Eloquent Relationship
+        $books = Book::with("type")->get();
     }
 
     /**
@@ -50,11 +48,8 @@ class BookController extends Controller
      */
     public function show($id)
     {
-        // Eloquent Query Builder Single Model
-        $bookQB = Book::select("books.id", "title", "types.name AS type", "release_date", "pages", "author", "description", "image", "price")
-        ->join("types", "types.id", "=", "books.type_id")
-        ->where("books.id", "=", $id)
-        ->first();
+        // Eloquent Relationship Single Model
+        $book = Book::with("type")->find($id);
     }
 
     /**
